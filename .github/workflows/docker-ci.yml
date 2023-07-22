@@ -1,0 +1,36 @@
+name: Docker CI
+on:
+  workflow_call:
+    inputs:
+      image-name:
+        required: true
+        type: string
+        description: "The full container registry address in form of registry.example.com/namespace/image:tag. This will be passed to the metadata generator"
+      dockerfile:
+        required: true
+        default: "Dockerfile"
+        description: "Filename of the Dockerfile for use in build, defaults to Dockerfile in the build context directory."
+      ghcr:
+        type: boolean
+        description: "Feature flag to enable deploying images to GHCR afer build"
+        default: true
+        required: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9
+      - name: Authenicate to GHCR
+        if: github.event_name != 'pull_request' && inputs.ghcr == true
+        uses: docker/login-action@40891eba8c2bcd1309b07ba8b11232f313e86779
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Authenticate to RHQCR
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@465a07811f14bebb1938fbed4728c6a1ff8901fc
+        with:
+          registry: quay.io
+          username: ${{ secrets.RHQCR_SERVICE_ACCOUNT_USERNAME }}
+          password: ${{ secrets.RHQCR_SERVICE_ACCOUNT_PASSWORD }}
