@@ -1,0 +1,13 @@
+# action.yml
+name: '[RecapTime.dev] Mkdocs Build over Docker'
+description: 'Greet someone and record the time'
+inputs:
+  config:
+    description: 'Path to Mkdocs config file'
+    required: true
+    default: 'mkdocs.yml'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.config }}
