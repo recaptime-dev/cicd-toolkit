@@ -1,0 +1,15 @@
+name: Build Mkdocs site
+on:
+  workflow_call:
+    inputs:
+      config:
+        required: true
+        type: string
+        description: your mom
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@
+      - name: Build docs site
+        uses: recaptime-dev/cicd-toolkit/.github/actions/mkdocs-build@main
