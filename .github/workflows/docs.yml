@@ -1,0 +1,13 @@
+name: Documentation
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  meta:
+    uses: ./.github/workflows/mkdocs-build.yml
+    secrets: inherit
+    with:
+      config: mkdocs.yml
+  
