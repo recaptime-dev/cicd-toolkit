@@ -1,6 +1,6 @@
 # action.yml
-name: '[RecapTime.dev] Mkdocs Build over Docker'
-description: 'Greet someone and record the time'
+name: '[RecapTime.dev] Build Mkdocs site over Docker container'
+description: 'Builds a Mkdocs site over a Docker container environment based on Alpine Linux.'
 inputs:
   config:
     description: 'Path to Mkdocs config file'
