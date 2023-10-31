@@ -1,11 +1,17 @@
 site_name: CI/CD Toolkit by RecapTime.dev
 site_url: https://cicd-toolkit.docs.recaptime.eu.org
+use_directory_urls: true
+docs_dir: docs
+
+repo_name: recaptime-dev/cicd-toolkit
+repo_url: https://github.com/recaptime-dev/cicd-toolkit
+edit_uri: blob/main/docs/
 
 # Theme settings
 theme:
   name: material
   icon:
-    logo: octicons/book-16
+    logo: material/circle-slice-3
     # TODO: Use Material icons instead of this
     admonition:
       note: octicons/tag-16
@@ -20,6 +26,7 @@ theme:
       bug: octicons/bug-16
       example: octicons/beaker-16
       quote: octicons/quote-16
+      lock: octicons/lock-16
   features:
     - announce.dismiss
     - content.action.edit
@@ -63,8 +70,68 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
 
+extra_css:
+  - assets/stylesheets/custom-admonitons.css
+
+# Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/mkdocs.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
 nav:
   - Home: index.md
-  - Usage:
+  - User Guide:
     - GitHub Actions:
-      - Reusable Workflows: usage/github-actions/reusable-workflows.md
+      - Reusable Workflows:
+        - user-guide/github-actions/reusable-workflows/index.md
+        - Build Mkdocs site workflow: user-guide/github-actions/reusable-workflows/mkdocs-build.md
+      - Actions:
+        - Build Mkdocs site over Docker container: user-guide/github-actions/actions/mkdocs-build.md
+  - Maintainer Guide:
+    - maintainer-guide/index.md
+    - Stability levels: maintainer-guide/stability-levels.md

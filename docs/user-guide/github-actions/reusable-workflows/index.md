@@ -1,8 +1,8 @@
-# Using reusable GitHub Actions workflows
+# Reusable workflows in GitHub Actions
 
 ## Usage
 
-```yml
+```yaml
 jobs:
   # [...]
   job-name-here:
@@ -12,6 +12,10 @@ jobs:
     with:
       # pass workflow inputs here
     secrets:
-      DOPPLER_TOKEN; ${{ secrets.DOPPLER_TOKEN }} # only pass if documented and required
-      # pass other secrets here
+      # check docs on which secrets to pass, or..
+      inherit: true
 ```
+
+## Available reusable workflows
+
+* [Build Mkdocs site](./mkdocs-build.md)

@@ -6,6 +6,19 @@ on:
         required: true
         type: string
         description: your mom
+      deploy-to:
+        required: true
+        type: string
+        description: "Where shall we deploy the build results to? Supported values: github-pages, cf-pages, netlify, gitlab-pages"
+        default: "github-pages"
+      cf-pages-project:
+        required: false
+        type: string
+        description: "Cloudflare Pages project slug to deploy onto"
+      gitlab-pages-host:
+        required: false
+        type: string
+        description: ""
 
 permissions:
   id-token: write
@@ -28,10 +41,11 @@ jobs:
           retention-days: 7
   deploy-github:
     environment:
-      name: github-pages
+      name: production/github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     # Requires test job results
     needs: build
+    if: inputs.deploy-to == 'github-pages'
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact
@@ -53,3 +67,35 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+  deploy-cf-pages:
+    environment:
+      name: production/cloudflare-pages
+      url: ${{ steps.deployment.outputs.url }}
+    if: inputs.deploy-to == 'cf-pages'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: docs
+
+      - name: Extract artifact
+        run: tar -xvf build-result.tar.gz -C public
+
+      - name: Cloudflare Pages GitHub Action
+        # You may pin to the exact commit or the version.
+        # uses: cloudflare/pages-action@f0a1cd58cd66095dee69bfa18fa5efd1dde93bca
+        uses: cloudflare/pages-action@v1.5.0
+        id: deployment
+        with:
+          # Cloudflare API Token
+          apiToken: ${{secrets.CLOUDFLARE_BOT_API_TOKEN}}
+          # Cloudflare Account ID
+          accountId: ${{vars.CLOUDFLARE_ACCOUNT_ID}}
+          # The name of the Pages project to upload to
+          projectName: ${{inputs.cf-pages-project}}
+          # The directory of static assets to upload
+          directory: public
+          # GitHub Token
+          gitHubToken: ${{github.token}}
+          wranglerVersion: '3'

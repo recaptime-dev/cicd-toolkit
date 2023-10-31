@@ -3,6 +3,12 @@ name: Documentation
 on:
   push:
     branches: ["main"]
+    paths:
+      - docs/**/*.md
+      - docs/*.md
+      - mkdocs.yml
+      - .github/workflows/docs.yml
+      - .github/workflows/mkdocs-build.yml
 
 jobs:
   meta:
@@ -10,6 +16,7 @@ jobs:
     secrets: inherit
     with:
       config: mkdocs.yml
+      deploy-to: cf-pages
     permissions:
       pages: write
       id-token: write
