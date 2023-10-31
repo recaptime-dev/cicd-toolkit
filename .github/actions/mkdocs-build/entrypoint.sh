@@ -8,6 +8,7 @@ if [ -f "$GITHUB_WORKSPACE/Pipfile.lock" ]; then
   pipenv install --ignore-pipfile --deploy
 else
   pip3 install -r requirements.txt
+fi
 echo "::endgroup::"
 
 echo "::group::running build"

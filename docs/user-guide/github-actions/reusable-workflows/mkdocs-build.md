@@ -3,6 +3,11 @@
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](../../../maintainer-guide/stability-levels.md#1---experimental)
 ![Static Badge](https://img.shields.io/badge/GitHub%20Actions-compatible-green?style=flat-square&logo=github)
 
+!!! danger "This tool in CI/CD Toolkit is experimental, proceed at your own risk"
+    This tool is currently undergo early or active development, and its use outside Recap Time Squad
+    projects is not recommended due to breaking changes that may not be SemVer compatible,
+    although we welcome feedback to help squash bugs and add features.
+
 ## Usage
 
 ```yaml title=".github/workflows/pages.yml"
