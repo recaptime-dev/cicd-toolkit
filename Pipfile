@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+mkdocs-material = "*"
+mkdocs-git-revision-date-localized-plugin = "*"
+mkdocs-minify-plugin = "*"
+mkdocs-redirects = "*"
+mkdocs-rss-plugin = "*"
+mkdocs-git-committers-plugin-2 = "*"
+pillow = "*"
+cairosvg = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"

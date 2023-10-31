@@ -1,0 +1,11 @@
+{
+  "name": "cicd-toolkit",
+  "packageManager": "yarn@4.0.1",
+  "devDependencies": {
+    "wrangler": "^3.15.0"
+  },
+  "scripts": {
+    "setup": "pip3 install -r requirements.txt",
+    "setup:pyenv": "pipenv install"
+  }
+}
