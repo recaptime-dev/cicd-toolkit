@@ -10,4 +10,7 @@ jobs:
     secrets: inherit
     with:
       config: mkdocs.yml
-  
+    permissions:
+      pages: write
+      id-token: write
+      contents: read
