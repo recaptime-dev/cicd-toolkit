@@ -71,6 +71,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1
   deploy-cf-pages:
+    needs: build
     environment:
       name: production/cloudflare-pages
       url: ${{ steps.deployment.outputs.url }}
