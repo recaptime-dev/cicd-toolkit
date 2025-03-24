@@ -136,7 +136,8 @@ nav:
               - github-actions/reusable-workflows/index.md
               - Build Mkdocs site workflow: github-actions/reusable-workflows/mkdocs-build.md
           - Actions:
-              - Build Mkdocs site over Docker container: github-actions/actions/mkdocs-build.md
+              - github-actions/actions/index.md
+              - Build Mkdocs site over Docker container: github-actions/actions/mkdocs-build-docker.md
   - Maintainer Guide:
       - maintainer-guide/index.md
       - Stability levels: maintainer-guide/stability-levels.md

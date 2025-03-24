@@ -1,12 +1,18 @@
-# Build Mkdocs site
+# Build Mkdocs site reusable workflow
 
-[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](../../../maintainer-guide/stability-levels.md#1---experimental)
-![Static Badge](https://img.shields.io/badge/GitHub%20Actions-compatible-green?style=flat-square&logo=github)
+[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](../../maintainer-guide/stability-levels.md#1---experimental)
+![github actions compatible](https://img.shields.io/badge/GitHub%20Actions-compatible-green?style=flat-square&logo=github)
 
 !!! danger "This tool in CI/CD Toolkit is experimental, proceed at your own risk"
     This tool is currently undergo early or active development, and its use outside Recap Time Squad
     projects is not recommended due to breaking changes that may not be SemVer compatible,
     although we welcome feedback to help squash bugs and add features.
+
+## Description
+
+An batteries-included reusable workflow for building and deploying your Mkdocs-based
+site to hosting services such as Cloudflare Pages and GitHub Pages.
+
 
 ## Usage
 
@@ -46,7 +52,7 @@ jobs:
 
 **Required**: Yes, but defaults to `mkdocs.yml` if left blank.
 
-Path to Mkdocs config file to be used by the action container to run `mkdocs build.`
+Path to Mkdocs config file to be used by the action container to run `mkdocs build`.
 
 ### `use-venv`
 
@@ -56,7 +62,14 @@ When set to `true` or a `Pipfile.lock` is found within project root, the entrypo
 script will create a Python virtual environment using the
 `#!bash pipenv install --ignore-pipenv --deploy` command.
 
+## Secrets
+
+### Required
+
+* `CLOUDFLARE_BOT_API_TOKEN` - Cloudflare API token, either generated at user or organization/account level.
+    * Only required when deploying to Cloudflare Pages
+
 ## Links
 
 * [See source workflow YAML](https://github.com/recaptime-dev/cicd-toolkit/blob/main/.github/workflows/mkdocs-build.yml)
-* [Build Mkdocs site over Docker container GitHub Action](../actions/mkdocs-build.md)
+* [Build Mkdocs site over Docker container GitHub Action](../actions/mkdocs-build-docker.md)

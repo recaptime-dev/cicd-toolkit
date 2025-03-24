@@ -52,6 +52,7 @@ You may also see this following warning in its respective documentation:
 
 ## Badge sources
 
-We use <https://github.com/badges/stability-badges>
+We use the badges provided by the [shields.io project](https://shields.io) at
+<https://github.com/badges/stability-badges>.
 
 [node-stability-index]: https://nodejs.org/api/documentation.html#documentation_stability_index
