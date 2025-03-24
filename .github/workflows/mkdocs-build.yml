@@ -48,8 +48,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: docs
-          path: |
-            build-result.tar.gz
+          path: ./site
           retention-days: 7
   deploy-github:
     environment:
@@ -65,16 +64,13 @@ jobs:
         with:
           name: docs
 
-      - name: Extract artifact
-        run: tar -xvf build-result.tar.gz -C public
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: public
+          path: site
       
       - name: Deploy to GitHub Pages
         id: deployment
@@ -92,9 +88,6 @@ jobs:
         with:
           name: docs
 
-      - name: Extract artifact
-        run: tar -xvf build-result.tar.gz -C public
-
       - name: Cloudflare Pages GitHub Action
         # You may pin to the exact commit or the version.
         # uses: cloudflare/pages-action@f0a1cd58cd66095dee69bfa18fa5efd1dde93bca
@@ -105,7 +98,7 @@ jobs:
           apiToken: ${{secrets.CLOUDFLARE_BOT_API_TOKEN}}
           # Cloudflare Account ID
           accountId: ${{inputs.cf-pages-account-id}}
-          command: pages deploy ./public --project-name ${{inputs.cf-pages-project}} ${{inputs.cf-pages-cli-flags}}
+          command: pages deploy ./site --project-name ${{inputs.cf-pages-project}} ${{inputs.cf-pages-cli-flags}}
           # GitHub Token
           gitHubToken: ${{github.token}}
           wranglerVersion: '3'

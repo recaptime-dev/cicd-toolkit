@@ -18,11 +18,3 @@ else
   mkdocs build -f "${MKDOCS_CONFIG_PATH}" -d site
 fi
 echo "::endgroup::"
-
-echo "::group::generating archive"
-tar -C site -cvz . -f build-result.tar.gz
-echo "::endgroup::"
-
-echo "::group:: cleanup"
-rm -rv site
-echo "::endgroup::"
