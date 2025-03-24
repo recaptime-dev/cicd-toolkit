@@ -21,3 +21,4 @@ jobs:
       pages: write
       id-token: write
       contents: read
+      deployments: write
