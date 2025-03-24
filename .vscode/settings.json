@@ -2,5 +2,10 @@
   "search.exclude": {
     "**/.yarn": true,
     "**/.pnp.*": true
+  },
+  "yaml.schemas": {
+    "https://squidfunk.github.io/mkdocs-material/schema.json": [
+      "./mkdocs.yml"
+    ]
   }
 }
