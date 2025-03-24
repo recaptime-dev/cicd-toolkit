@@ -1,7 +1,7 @@
 # Stability levels
 
 We use these stability levels to communicate at which stability stage a specific toolkit
-maintained by Recap Time Squad for CI/CD usage, based off [Node.js stability index](https://nodejs.org/api/documentation.html#documentation_stability_index).
+maintained by Recap Time Squad for CI/CD usage, based off [Node.js stability index][node-stability-index].
 
 ## Explained by level
 
@@ -53,3 +53,5 @@ You may also see this following warning in its respective documentation:
 ## Badge sources
 
 We use <https://github.com/badges/stability-badges>
+
+[node-stability-index]: https://nodejs.org/api/documentation.html#documentation_stability_index
