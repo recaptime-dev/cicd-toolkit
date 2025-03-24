@@ -1,10 +1,11 @@
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
 site_name: CI/CD Toolkit by RecapTime.dev
-site_url: https://cicd-toolkit.docs.recaptime.eu.org
+site_url: https://cicd-toolkit.docs.recaptime.dev
 use_directory_urls: true
 docs_dir: docs
 
-repo_name: recaptime-dev/cicd-toolkit
-repo_url: https://github.com/recaptime-dev/cicd-toolkit
+repo_name: GitLab repo
+repo_url: https://gitlab.com/recaptime-dev/infra/cicd-toolkit
 edit_uri: blob/main/docs/
 
 # Theme settings
@@ -12,6 +13,7 @@ theme:
   name: material
   icon:
     logo: material/circle-slice-3
+
     # TODO: Use Material icons instead of this
     admonition:
       note: octicons/tag-16
@@ -27,6 +29,7 @@ theme:
       example: octicons/beaker-16
       quote: octicons/quote-16
       lock: octicons/lock-16
+
   features:
     - announce.dismiss
     - content.action.edit
@@ -56,7 +59,7 @@ theme:
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: deep orange
-      accent: light blue
+      accent:
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -124,14 +127,22 @@ markdown_extensions:
   - pymdownx.tilde
 
 nav:
-  - Home: index.md
+  - Meta:
+      - index.md
+      - contribute.md
   - User Guide:
-    - GitHub Actions:
-      - Reusable Workflows:
-        - user-guide/github-actions/reusable-workflows/index.md
-        - Build Mkdocs site workflow: user-guide/github-actions/reusable-workflows/mkdocs-build.md
-      - Actions:
-        - Build Mkdocs site over Docker container: user-guide/github-actions/actions/mkdocs-build.md
+      - GitHub Actions:
+          - Reusable Workflows:
+              - github-actions/reusable-workflows/index.md
+              - Build Mkdocs site workflow: github-actions/reusable-workflows/mkdocs-build.md
+          - Actions:
+              - Build Mkdocs site over Docker container: github-actions/actions/mkdocs-build.md
   - Maintainer Guide:
-    - maintainer-guide/index.md
-    - Stability levels: maintainer-guide/stability-levels.md
+      - maintainer-guide/index.md
+      - Stability levels: maintainer-guide/stability-levels.md
+
+extra:
+  social:
+    - icon: octicons/mark-github-16
+      link: https://github.com/recaptime-dev/cicd-toolkit
+      name: "@recaptime-dev/cicd-toolkit on github"
