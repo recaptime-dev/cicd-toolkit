@@ -1,4 +1,4 @@
-FROM quay.io/ajhalili2006/mkdocs-material-build-ci:latest
+FROM ghcr.io/andreijiroh-dev/docker-images/mkdocs-material:latest
 
 COPY entrypoint.sh /entrypoint.sh
 WORKDIR /github/workspace
